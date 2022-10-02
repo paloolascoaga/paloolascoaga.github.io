@@ -7,12 +7,13 @@ document.getElementsByClassName("btn btn-primary")[0].addEventListener('click', 
 
     if (emailDom.value == '' || passwordDom.value == '') {
 
-        alert('Ingrese los campos requeridos');
+        alert('Ingrese todos los campos requeridos');
         
     } else {
 
         window.location.href = "./Findex.html"
 
     }
+localStorage.setItem("Username", emailDom.value);
 
 })
