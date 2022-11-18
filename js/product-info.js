@@ -34,10 +34,10 @@ function ShowProductInfo(InfoArray) {
 document.getElementById("info-container").innerHTML = htmlContentToAppend;
 };
 
-function Estrellitas(puntos){
+function Estrellitas(puntaje){
     let estrellas ="";
     for(let i = 1; i <= 5; i++){
-    if (i<=puntos){
+    if (i<=puntaje){
         estrellas += `<span class="fa fa-star checked"></span>`;
     }else{
         estrellas += `<span class="fa fa-star"></span>`;
@@ -75,7 +75,26 @@ for (let i = 0; i < CmmsArray.length; i++) {
 
 };
 
+function showRelated (InfoArray){
+    let htmlContentToAppend= ''
 
+for (let i = 0; i < InfoArray.relatedProducts.length; i++) {
+    const related = InfoArray.relatedProducts[i];
+htmlContentToAppend+=`
+    <div class="card" style="width: 18rem;">
+  <img src="./${related.image}" class="card-img-top" alt="..." onclick="setProdID(${related.id})" style="cursor:pointer;">
+  <div class="card-body">
+    <p class="card-text" >${related.name}</p>
+  </div>
+</div>
+    `
+
+    
+}
+
+document.getElementById("relatedProducts").innerHTML+= htmlContentToAppend
+   
+}
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -85,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (resultObj.status === "ok") {
             ProdInfoArray = resultObj.data;
             ShowProductInfo(ProdInfoArray);
+            showRelated(ProdInfoArray);
         }
     });
 

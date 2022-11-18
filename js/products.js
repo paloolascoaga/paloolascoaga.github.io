@@ -91,11 +91,6 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 }
 
 
-function setProdID(id) {
-    localStorage.setItem("ProdID", id);
-    window.location ="./product-info.html"
-}
-
 
 
 
